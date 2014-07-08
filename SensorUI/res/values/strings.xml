@@ -6,8 +6,8 @@
     <string name="title_section1">조명가동율</string>
     <string name="title_section2">스케줄설정</string>
     <string name="title_section3">조명기구사용현황</string>
-    <string name="title_section4">센싱모드 설정</string>
-    <string name="title_section5">미정화면</string>
+    <string name="title_section4">조도값 설정</string>
+    <string name="title_section5">조명현황</string>
     <string name="title_invert_transformer">Invert Transformer</string>
     <string name="title_transform_right">RightAngle Transformer</string>
     <string name="title_transform_combi">Transformer Combination</string>
