@@ -14,13 +14,17 @@
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
-        <activity
-                android:name="com.example.sensingui.HomeActivity"
-                android:label="@string/app_name">
-                            <intent-filter>
+        <activity android:name="LoginActivity">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        
+        <activity
+                android:name="com.example.sensingui.HomeActivity"
+                android:label="@string/app_name">
+
         </activity>
 
     </application>
