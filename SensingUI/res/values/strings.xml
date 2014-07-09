@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Paralloid Example</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_section1">Parallax View</string>
-    <string name="title_section2">Shift Background</string>
-    <string name="title_section3">Parallax Background</string>
-    <string name="title_section4">Parallax List Background</string>
-    <string name="title_section5">OverParallax Background</string>
+    <string name="app_name">SensorSystemUI</string>
+    <string name="action_settings">미구현</string>
+    <string name="title_section1">조도센서 현황</string>
+    <string name="title_section2">조명가동율</string>
+    <string name="title_section3">스케줄 설정</string>
+    <string name="title_section4">조명기구사용현황</string>
+    <string name="title_section5">조도설정</string>
     <string name="title_invert_transformer">Invert Transformer</string>
     <string name="title_transform_right">RightAngle Transformer</string>
     <string name="title_transform_combi">Transformer Combination</string>
     <string name="peek">Peek a boo!</string>
 
-    <string name="bacon">Bacon ipsum dolor sit amet ut t-bone ham hock pariatur. Ex aliquip est dolore strip steak enim. Fugiat reprehenderit tenderloin ham hock. Pork minim chicken, jowl do strip steak short loin meatball bacon doner proident nulla eiusmod. Elit veniam beef sunt.</string>
+    <string name="bacon">현재 UI만 개발되었습니다. 내용을 채워야해요.</string>
 
 </resources>

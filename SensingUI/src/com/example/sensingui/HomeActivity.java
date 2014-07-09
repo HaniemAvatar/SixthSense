@@ -75,18 +75,12 @@ public class HomeActivity extends FragmentActivity {
                     return new ParallaxBackgroundListFragment();
                 case 4:
                     return new OverParallaxBackgroundListFragment();
-                case 5:
-                    return new ParallaxViewDownFragment();
-                case 6:
-                    return new ParallaxViewRightFragment();
-                case 7:
-                    return new ParallaxViewCombiFragment();
             }
         }
 
         @Override
         public int getCount() {
-            return 8;
+            return 5;
         }
 
         @Override
@@ -102,12 +96,6 @@ public class HomeActivity extends FragmentActivity {
                     return getString(R.string.title_section4);
                 case 4:
                     return getString(R.string.title_section5);
-                case 5:
-                    return getString(R.string.title_invert_transformer);
-                case 6:
-                    return getString(R.string.title_transform_right);
-                case 7:
-                    return getString(R.string.title_transform_combi);
             }
             return null;
         }
