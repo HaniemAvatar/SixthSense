@@ -248,7 +248,7 @@ int drawable light_1 0x7f02005f
 int drawable light_2 0x7f020060
 int drawable light_3 0x7f020061
 int drawable light_4 0x7f020062
-int drawable sixsense_logo 0x7f020063
+int drawable sixthsense_logo 0x7f020063
 int id AutoSense 0x7f050043
 int id action_bar 0x7f05001c
 int id action_bar_activity_content 0x7f050015
@@ -261,7 +261,7 @@ int id action_context_bar 0x7f05001d
 int id action_menu_divider 0x7f050016
 int id action_menu_presenter 0x7f050017
 int id action_mode_close_button 0x7f050024
-int id action_settings 0x7f05004a
+int id action_settings 0x7f050046
 int id activity_chooser_view_content 0x7f050025
 int id always 0x7f05000b
 int id beginning 0x7f050011
@@ -287,7 +287,6 @@ int id listMode 0x7f050001
 int id list_item 0x7f050029
 int id list_view 0x7f050045
 int id llight 0x7f050042
-int id logIn 0x7f050049
 int id middle 0x7f050012
 int id never 0x7f050009
 int id none 0x7f050010
@@ -297,7 +296,6 @@ int id pager_title_strip 0x7f05003d
 int id progress_circular 0x7f050018
 int id progress_horizontal 0x7f050019
 int id radio 0x7f05002f
-int id resister 0x7f050048
 int id scroll_view 0x7f050041
 int id search_badge 0x7f050032
 int id search_bar 0x7f050031
@@ -320,8 +318,6 @@ int id title 0x7f05002b
 int id top_action_bar 0x7f050020
 int id up 0x7f050021
 int id useLogo 0x7f050003
-int id useremail 0x7f050046
-int id userpassword 0x7f050047
 int id vlight 0x7f050044
 int id withText 0x7f05000c
 int integer abc_max_action_buttons 0x7f090000
@@ -357,8 +353,7 @@ int layout fragment_invert_transformer 0x7f03001c
 int layout fragment_main 0x7f03001d
 int layout fragment_parallax_background 0x7f03001e
 int layout fragment_parallax_list_background 0x7f03001f
-int layout login_ui 0x7f030020
-int layout support_simple_spinner_dropdown_item 0x7f030021
+int layout support_simple_spinner_dropdown_item 0x7f030020
 int menu home 0x7f0c0000
 int menu main 0x7f0c0001
 int string abc_action_bar_home_description 0x7f0a0001
