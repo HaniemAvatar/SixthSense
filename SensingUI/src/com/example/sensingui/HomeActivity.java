@@ -66,9 +66,9 @@ public class HomeActivity extends FragmentActivity {
             switch (position) {
                 default:
                 case 0:
-                    return new MainActivity();
+                    return new SensingConditionView();
                 case 1:
-                    return new ShiftBackgroundFragment();
+                    return new SensingOperationView();
                 case 2:
                     return new ParallaxBackgroundFragment();
                 case 3:

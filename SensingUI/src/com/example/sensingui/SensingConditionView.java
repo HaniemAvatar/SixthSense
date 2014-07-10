@@ -19,7 +19,7 @@ import android.widget.TextView;
  * A dummy fragment representing a section of the app, but that simply
  * displays dummy text.
  */
-public class MainActivity extends Fragment {
+public class SensingConditionView extends Fragment {
     /**
      * The fragment argument representing the section number for this
      * fragment.
@@ -35,7 +35,7 @@ public class MainActivity extends Fragment {
 	ImageView vlight ;
 	Context mContext;
 	
-    public MainActivity() { 	
+    public SensingConditionView() { 	
     }
 
     @Override

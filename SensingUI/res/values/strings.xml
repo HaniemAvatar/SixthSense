@@ -12,7 +12,30 @@
     <string name="title_transform_right">RightAngle Transformer</string>
     <string name="title_transform_combi">Transformer Combination</string>
     <string name="peek">Peek a boo!</string>
-
+    <string name="led01">거실(LED01)</string>
+    <string name="led02">부엌(LED02)</string>
+    <string name="led03">배란다(LED03)</string>
+    <string name="led04">작은방(LED04)</string>
+    <string name="led05">큰방(LED05)</string>
+    <string name="led06">신발장(LED06)</string>
+    <string name="led07">욕실(LED07)</string>
+    <string name="led08">뒷배란다(LED08)</string>    
+    <string name="per01">38%</string>    
+    <string name="per02">56%</string>    
+    <string name="per03">75%</string>    
+    <string name="per04">86%</string>    
+    <string name="per05">75%</string>    
+    <string name="per06">71%</string>    
+    <string name="per07">3%</string>    
+    <string name="per08">15%</string>        
+    <string name="hour01">1d 13h</string>
+    <string name="hour02">12h</string>
+    <string name="hour03">4d 3h</string>
+    <string name="hour04">2d 10h</string>
+    <string name="hour05">23h</string>
+    <string name="hour06">1d 22h</string>
+    <string name="hour07">16h</string>
+    <string name="hour08">2d 2h</string>
     <string name="bacon">현재 UI만 개발되었습니다. 내용을 채워야해요.</string>
 
 </resources>
