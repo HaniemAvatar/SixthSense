@@ -41,7 +41,8 @@ public final class ParallaxHelper {
     }
 
 
-    public static void setParallaxBackground(final View view, final ParallaxDrawable parallaxDrawable) {
+    @SuppressWarnings("deprecation")
+	public static void setParallaxBackground(final View view, final ParallaxDrawable parallaxDrawable) {
         if (view == null || parallaxDrawable == null) return;
         // We request the size before attaching just incase the view has drawn we can pre populate the drawable with the extra height/width
         requestScrollableWidthHeight(view, parallaxDrawable.getFactor(), new ParallaxHelper.ScrollableWidthHeightCallback() {
@@ -116,7 +117,8 @@ public final class ParallaxHelper {
     static void fixParallaxBackgroundPreJBMR1(final View view, final Drawable drawable) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
             drawable.setCallback(new Drawable.Callback() {
-                @Override
+                @SuppressWarnings("deprecation")
+				@Override
                 public void invalidateDrawable(Drawable who) {
                     view.setBackgroundDrawable(who);
                 }

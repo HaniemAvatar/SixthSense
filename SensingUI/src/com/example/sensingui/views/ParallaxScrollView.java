@@ -16,7 +16,7 @@ import com.example.sensingui.transform.Transformer;
  */
 public class ParallaxScrollView extends ScrollView implements Parallaxor {
 
-    ParallaxViewController mParallaxViewController;
+    ParallaxViewController<ParallaxScrollView> mParallaxViewController;
 
     public ParallaxScrollView(Context context) {
         super(context);

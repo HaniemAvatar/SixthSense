@@ -16,7 +16,7 @@ import com.example.sensingui.transform.Transformer;
  */
 public class ParallaxListView extends ListView implements Parallaxor {
 
-    ParallaxViewController mParallaxViewController;
+    ParallaxViewController<ParallaxListView> mParallaxViewController;
 
     public ParallaxListView(Context context) {
         super(context);

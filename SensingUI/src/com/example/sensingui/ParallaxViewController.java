@@ -11,7 +11,7 @@ import com.example.sensingui.measure.AbsListScrollSize;
  */
 public class ParallaxViewController<T extends View & Parallaxor> extends ParallaxController<T> implements AbsListView.OnScrollListener {
 
-    public static <T extends View & Parallaxor> ParallaxViewController wrap(T wrappedView) {
+    public static <T extends View & Parallaxor> ParallaxViewController<T> wrap(T wrappedView) {
         return new ParallaxViewController<T>(wrappedView);
     }
 
