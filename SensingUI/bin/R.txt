@@ -261,8 +261,9 @@ int id action_context_bar 0x7f05001d
 int id action_menu_divider 0x7f050016
 int id action_menu_presenter 0x7f050017
 int id action_mode_close_button 0x7f050024
-int id action_settings 0x7f050065
+int id action_settings 0x7f050066
 int id activity_chooser_view_content 0x7f050025
+int id addbutton 0x7f050065
 int id always 0x7f05000b
 int id beginning 0x7f050011
 int id checkbox 0x7f05002d
@@ -385,7 +386,8 @@ int layout fragment_parallax_background 0x7f03001d
 int layout fragment_parallax_list_background 0x7f03001e
 int layout login_main 0x7f03001f
 int layout operate_main 0x7f030020
-int layout support_simple_spinner_dropdown_item 0x7f030021
+int layout schedule_main 0x7f030021
+int layout support_simple_spinner_dropdown_item 0x7f030022
 int menu home 0x7f0c0000
 int menu main 0x7f0c0001
 int string abc_action_bar_home_description 0x7f0a0001

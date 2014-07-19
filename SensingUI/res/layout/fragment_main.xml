@@ -26,11 +26,8 @@
         android:layout_height="wrap_content"        
         android:id="@+id/AutoSense"
         android:text="Turn On BrightSensor."
-        />
-
-
- 
-            	<ImageView 
+        /> 
+     <ImageView 
       	  android:id="@+id/vlight"
       	  android:layout_width="wrap_content"
       	  android:layout_height="wrap_content" />
