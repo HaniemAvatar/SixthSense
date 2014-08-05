@@ -70,32 +70,28 @@ public class HomeActivity extends FragmentActivity {
                 case 1: // 2번째 화면
                     return new SensingOperationView();
                 case 2: // 3번째 화면
-                    return new ParallaxBackgroundFragment();
+                    return new SensingScheduleView();
                 case 3: // 4번째 화면
-                    return new ParallaxBackgroundListFragment();
-                case 4: // 5번째 화면
-                    return new OverParallaxBackgroundListFragment();
+                    return new SensingConditionView();
             }
         }
 
         @Override
         public int getCount() { //화면의 숫자는 5개
-            return 5;
+            return 4;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0: //1번째 화면의 제목
-                    return getString(R.string.title_section1); //1번째 화면의 제목
+                    return getString(R.string.title_section1);
                 case 1: //2번째 화면의 제목
                     return getString(R.string.title_section2);
                 case 2: //3번째 화면의 제목 
                     return getString(R.string.title_section3);
                 case 3: //4번째 화면의 제목
                     return getString(R.string.title_section4);
-                case 4: //5번째 화면의 제목
-                    return getString(R.string.title_section5);
             }
             return null;
         }

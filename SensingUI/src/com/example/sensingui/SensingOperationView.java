@@ -2,6 +2,7 @@ package com.example.sensingui;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint.Align;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -77,21 +78,24 @@ public class SensingOperationView extends Fragment {
                 , new GraphViewData(10, 0.0d)
         });
         exampleSeries3 = new GraphViewSeries(new GraphViewData[] {});
-        exampleSeries1.getStyle().color = Color.GREEN;
-        exampleSeries3.getStyle().color = Color.RED;
+        exampleSeries1.getStyle().color = 0XDF729FCF;
+        exampleSeries3.getStyle().color = 0XDF729FCF;
  
          
         if (graphType.equalsIgnoreCase("bar")) {
             graphView = new BarGraphView(container.getContext(), "GraphViewDemo");
         } else {
-            graphView = new LineGraphView(container.getContext(), "Usage Of LEDs");
+            graphView = new LineGraphView(container.getContext(), "");
             ((LineGraphView) graphView).setDrawBackground(true);
+            graphView.setBackgroundColor(0X55729FCF);
         }
         graphView.addSeries(exampleSeries1); 
         graphView.addSeries(exampleSeries3);
         graphView.setManualYAxisBounds(5,0);
         graphView.getGraphViewStyle().setNumVerticalLabels(6);
-        graphView.getGraphViewStyle().setNumHorizontalLabels(10);
+        graphView.getGraphViewStyle().setNumHorizontalLabels(1);
+        graphView.getGraphViewStyle().setVerticalLabelsWidth(0);
+        graphView.getGraphViewStyle().setVerticalLabelsAlign(Align.CENTER);
  
         LinearLayout layout = (LinearLayout) rootView.findViewById(R.id.opgraph);
         layout.addView(graphView);
@@ -113,16 +117,16 @@ public class SensingOperationView extends Fragment {
         if (graphType.equalsIgnoreCase("bar")) {
             graphView = new BarGraphView(container.getContext(), "GraphViewDemo");
         } else {
-            graphView = new LineGraphView(container.getContext(), "Usage Of Lights");        
+            graphView = new LineGraphView(container.getContext(), "");        
             ((LineGraphView) graphView).setDrawBackground(true);
+            graphView.setBackgroundColor(0X55729FCF);
         }
          
         graphView.addSeries(exampleSeries2);
         graphView.setViewPort(1, 8);
         graphView.setScalable(true);
         graphView.getGraphViewStyle().setGridColor(Color.BLACK);
-        graphView.getGraphViewStyle().setHorizontalLabelsColor(Color.BLACK);
-        graphView.getGraphViewStyle().setVerticalLabelsColor(Color.BLACK);
+        graphView.setScrollable(true);
  
         layout = (LinearLayout) rootView.findViewById(R.id.opgraph);
         layout.addView(graphView);

@@ -9,7 +9,8 @@
     tools:context="com.example.test2.MainActivity$PlaceholderFragment"
     android:orientation="vertical"
     android:background="#EEEEEE"
-    android:id="@+id/opview">
+    android:id="@+id/opview"
+    android:padding="0dp">
     <LinearLayout 
         android:id="@+id/opgraph"
         android:layout_weight="1"
@@ -20,8 +21,9 @@
     </LinearLayout>    
     <HorizontalScrollView 
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:id="@+id/ophscroll" >
+        android:layout_height="90dp"
+        android:id="@+id/ophscroll" 
+        android:padding="10dp">
         <GridLayout 
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
