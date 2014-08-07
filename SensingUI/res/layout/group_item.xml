@@ -9,6 +9,12 @@
     <TextView
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alarm Time" />
+    <TextView
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -3,12 +3,13 @@ package com.example.sensingui;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.TextView;
@@ -28,55 +29,63 @@ public class SensingScheduleView extends Fragment {
 	private AnimatedExpandableListView listView;
     private ListAdapter adapter;
     public int alarmnumber;
+    Button addButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {        
-    	View rootView = inflater.inflate(R.layout.schedule_main, container, false);
+    	final View rootView = inflater.inflate(R.layout.schedule_main, container, false);
     	mContext=rootView.getContext();
-        List<GroupItem> items = new ArrayList<GroupItem>();
+        final List<GroupItem> items = new ArrayList<GroupItem>();
         alarmnumber=0;
+        
         // Populate our list with groups and it's children
-        for(int i = 1; i < alarmnumber; i++) {
-            GroupItem item = new GroupItem();
-            
-            item.title = "Group " + i;
-            
-            for(int j = 0; j < i; j++) {
-                ChildItem child = new ChildItem();
-                child.title = "Awesome item " + j;
-                child.hint = "Too awesome";
-                
-                item.items.add(child);
-            }
-            
-            items.add(item);
-        }
-        
-        adapter = new ListAdapter(mContext);
-        adapter.setData(items);
-        
-        listView = (AnimatedExpandableListView) rootView.findViewById(R.id.listView);
-        listView.setAdapter(adapter);
-        
-        // In order to show animations, we need to use a custom click handler
-        // for our ExpandableListView.
-        listView.setOnGroupClickListener(new OnGroupClickListener() {
+        addButton = (Button)rootView.findViewById(R.id.addbutton);
+        addButton.setFocusable(false);
+        addButton.setOnClickListener(new View.OnClickListener() {			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
 
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                // We call collapseGroupWithAnimation(int) and
-                // expandGroupWithAnimation(int) to animate group 
-                // expansion/collapse.
-                if (listView.isGroupExpanded(groupPosition)) {
-                    listView.collapseGroupWithAnimation(groupPosition);
-                } else {
-                    listView.expandGroupWithAnimation(groupPosition);
-                }
-                return true;
-            }
-            
+						// TODO Auto-generated method stub
+						GroupItem item = new GroupItem();	            
+				        item.title = "Alarm"+alarmnumber++;
+				        {
+				            ChildItem child = new ChildItem();
+				            child.title = "Create New UI ";
+				            child.hint = "Not Yet";                
+				            item.items.add(child);
+				        }
+				        items.add(item);
+				        
+				        adapter = new ListAdapter(mContext);
+				        adapter.setData(items);
+				        
+				        listView = (AnimatedExpandableListView) rootView.findViewById(R.id.listView);
+				        listView.setAdapter(adapter);
+				        
+				        // In order to show animations, we need to use a custom click handler
+				        // for our ExpandableListView.
+				        listView.setOnGroupClickListener(new OnGroupClickListener() {
+
+				            @Override
+				            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+				                // We call collapseGroupWithAnimation(int) and
+				                // expandGroupWithAnimation(int) to animate group 
+				                // expansion/collapse.
+				                if (listView.isGroupExpanded(groupPosition)) {
+				                    listView.collapseGroupWithAnimation(groupPosition);
+				                } else {
+				                    listView.expandGroupWithAnimation(groupPosition);
+				                }
+				                return true;
+				            }
+				            
+				        });
+
+				        }
         });
+
         return rootView;
     }
     

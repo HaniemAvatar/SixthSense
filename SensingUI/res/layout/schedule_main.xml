@@ -18,9 +18,9 @@
         android:layout_height="0dp"
         android:orientation="horizontal">
         <com.example.sensingui.assets.AnimatedExpandableListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            android:id="@+id/listView"
+     		android:layout_width="match_parent"
+       		android:layout_height="match_parent" />
 
     </LinearLayout>
 

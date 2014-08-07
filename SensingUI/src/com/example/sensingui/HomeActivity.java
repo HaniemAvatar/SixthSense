@@ -70,9 +70,9 @@ public class HomeActivity extends FragmentActivity {
                 case 1: // 2번째 화면
                     return new SensingOperationView();
                 case 2: // 3번째 화면
-                    return new SensingScheduleView();
+                    return new SensingPiechartView();
                 case 3: // 4번째 화면
-                    return new SensingConditionView();
+                    return new SensingScheduleView();
             }
         }
 

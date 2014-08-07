@@ -5,4 +5,7 @@
 
     <dimen name="demo_view_height">172dp</dimen>
     <dimen name="demo_view_margin">16dp</dimen>
+    <dimen name="default_margin">12dip</dimen>
+
+    
 </resources>

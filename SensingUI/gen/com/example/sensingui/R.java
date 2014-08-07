@@ -508,6 +508,24 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int panelMenuListWidth=0x7f01004a;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pieInnerCircleRatio=0x7f01006e;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pieSlicePadding=0x7f01006f;
         /**  Default PopupMenu style. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -858,10 +876,22 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070003;
+        public static final int abc_search_url_text_holo=0x7f07000d;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
+        public static final int blue=0x7f070004;
+        public static final int green=0x7f070006;
+        public static final int green_light=0x7f070007;
+        /**  Application 
+         */
+        public static final int holo_blue_light=0x7f07000b;
+        public static final int orange=0x7f070008;
+        public static final int purple=0x7f07000a;
+        public static final int red=0x7f070003;
+        public static final int title_background_color=0x7f07000c;
+        public static final int transparent_blue=0x7f070005;
+        public static final int transparent_orange=0x7f070009;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -958,6 +988,7 @@ containing a value of this type.
          */
         public static final int activity_horizontal_margin=0x7f080015;
         public static final int activity_vertical_margin=0x7f080016;
+        public static final int default_margin=0x7f080019;
         public static final int demo_view_height=0x7f080017;
         public static final int demo_view_margin=0x7f080018;
         /**  The platform's desired fixed height for a dialog along the major axis
@@ -1108,11 +1139,12 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050064;
+        public static final int action_settings=0x7f050066;
         public static final int activity_chooser_view_content=0x7f050025;
-        public static final int addbutton=0x7f050063;
+        public static final int addbutton=0x7f050065;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
+        public static final int brightness=0x7f050063;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int default_activity_button=0x7f050028;
@@ -1145,7 +1177,7 @@ containing a value of this type.
         public static final int led07=0x7f050050;
         public static final int led08=0x7f050051;
         public static final int listMode=0x7f050001;
-        public static final int listView=0x7f050062;
+        public static final int listView=0x7f050064;
         public static final int list_item=0x7f050029;
         public static final int llight=0x7f05003e;
         public static final int loginbt=0x7f050046;
@@ -1166,6 +1198,7 @@ containing a value of this type.
         public static final int per06=0x7f050057;
         public static final int per07=0x7f050058;
         public static final int per08=0x7f050059;
+        public static final int piegraph=0x7f050062;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
@@ -1254,14 +1287,28 @@ containing a value of this type.
         public static final int list_item=0x7f03001b;
         public static final int login_main=0x7f03001c;
         public static final int operate_main=0x7f03001d;
-        public static final int schedule_main=0x7f03001e;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001f;
+        public static final int piecharthorizontal_main=0x7f03001e;
+        public static final int piechartvertical_main=0x7f03001f;
+        public static final int schedule_main=0x7f030020;
+        public static final int support_simple_spinner_dropdown_item=0x7f030021;
     }
     public static final class menu {
         public static final int home=0x7f0c0000;
         public static final int main=0x7f0c0001;
     }
     public static final class string {
+        /**  Alert 
+         */
+        public static final int _0=0x7f0a003a;
+        public static final int _1=0x7f0a003b;
+        public static final int _2=0x7f0a003c;
+        public static final int _3=0x7f0a003d;
+        public static final int _4=0x7f0a003e;
+        public static final int _5=0x7f0a003f;
+        public static final int _6=0x7f0a0040;
+        public static final int _7=0x7f0a0041;
+        public static final int _8=0x7f0a0042;
+        public static final int _9=0x7f0a0043;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f0a0001;
@@ -1305,6 +1352,11 @@ containing a value of this type.
         public static final int action_settings=0x7f0a000e;
         public static final int app_name=0x7f0a000d;
         public static final int bacon=0x7f0a0030;
+        public static final int button_delete=0x7f0a0047;
+        public static final int button_new=0x7f0a0033;
+        public static final int cancel=0x7f0a0049;
+        public static final int clear_button_text=0x7f0a0045;
+        public static final int decimal_button_text=0x7f0a0044;
         public static final int hour01=0x7f0a0028;
         public static final int hour02=0x7f0a0029;
         public static final int hour03=0x7f0a002a;
@@ -1321,6 +1373,17 @@ containing a value of this type.
         public static final int led06=0x7f0a001d;
         public static final int led07=0x7f0a001e;
         public static final int led08=0x7f0a001f;
+        public static final int menu_item_delete=0x7f0a0036;
+        /**  Menu 
+         */
+        public static final int menu_item_new=0x7f0a0034;
+        public static final int menu_item_rate=0x7f0a0037;
+        public static final int menu_item_report=0x7f0a0039;
+        public static final int menu_item_save=0x7f0a0035;
+        public static final int menu_item_website=0x7f0a0038;
+        public static final int minus_button_text=0x7f0a0046;
+        public static final int no_alarms=0x7f0a0032;
+        public static final int ok=0x7f0a0048;
         public static final int peek=0x7f0a0017;
         public static final int per01=0x7f0a0020;
         public static final int per02=0x7f0a0021;
@@ -1330,6 +1393,9 @@ containing a value of this type.
         public static final int per06=0x7f0a0025;
         public static final int per07=0x7f0a0026;
         public static final int per08=0x7f0a0027;
+        /**  Math Alarm Activity 
+         */
+        public static final int title_activity_set_alarms=0x7f0a0031;
         public static final int title_invert_transformer=0x7f0a0014;
         public static final int title_section1=0x7f0a000f;
         public static final int title_section2=0x7f0a0010;
@@ -2790,6 +2856,51 @@ containing a value of this type.
           @attr name android:windowAnimationStyle
         */
         public static final int MenuView_android_windowAnimationStyle = 0;
+        /** Attributes that can be used with a PieGraph.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #PieGraph_pieInnerCircleRatio com.example.sensingui:pieInnerCircleRatio}</code></td><td></td></tr>
+           <tr><td><code>{@link #PieGraph_pieSlicePadding com.example.sensingui:pieSlicePadding}</code></td><td></td></tr>
+           </table>
+           @see #PieGraph_pieInnerCircleRatio
+           @see #PieGraph_pieSlicePadding
+         */
+        public static final int[] PieGraph = {
+            0x7f01006e, 0x7f01006f
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.example.sensingui.R.attr#pieInnerCircleRatio}
+          attribute's value can be found in the {@link #PieGraph} array.
+
+
+          <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.sensingui:pieInnerCircleRatio
+        */
+        public static final int PieGraph_pieInnerCircleRatio = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.example.sensingui.R.attr#pieSlicePadding}
+          attribute's value can be found in the {@link #PieGraph} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.sensingui:pieSlicePadding
+        */
+        public static final int PieGraph_pieSlicePadding = 1;
         /** Attributes that can be used with a SearchView.
            <p>Includes the following attributes:</p>
            <table>

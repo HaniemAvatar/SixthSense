@@ -42,14 +42,17 @@ public class LoginActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				
 				EditText uemail = (EditText)findViewById(R.id.useremail); //useremail이라는 id를 가진 xml의 edittext를 uemail이라는 변수에 부여
 				EditText upassword = (EditText)findViewById(R.id.userpassword); //upassword에 부여
+				
 				String semail=uemail.getText().toString(); //uemail을 통해 받아온 text의 형식은 edittext이기 때문에 이를 String으로 변환해야만 함. 변환한 String값을 semail에 저장
 				String spassword=upassword.getText().toString(); //마찬가지로 spassword에 저장
-				if(semail.equals("sixthsense")&&spassword.equals("12345")){ //semail의 값이 a와 같고,spassword의 값이 b와 같다면 다음을 수행 
-				Intent intent=new Intent(LoginActivity.this, HomeActivity.class); //Login Activity에서 HomeActivityfh 전환하기 위한 Intent생성
-				startActivity(intent);//Intent를 수행함으로써 HomeActivity를 실행
-				finish(); //현재 LoginActivity를 닫음으로써 HomeActivity에서 뒤로버튼을 눌렀을 때 LoginActivity로 돌아오지 않고 바로 종료되도록 설정 
+				
+				if(semail.equals("")&&spassword.equals("")){ //semail의 값이 a와 같고,spassword의 값이 b와 같다면 다음을 수행 
+					Intent intent=new Intent(LoginActivity.this, HomeActivity.class); //Login Activity에서 HomeActivityfh 전환하기 위한 Intent생성
+					startActivity(intent);//Intent를 수행함으로써 HomeActivity를 실행
+					finish(); //현재 LoginActivity를 닫음으로써 HomeActivity에서 뒤로버튼을 눌렀을 때 LoginActivity로 돌아오지 않고 바로 종료되도록 설정 
 				}
 				else{ //ID나 Password가 주어진값과 다를 경우 Alert를 띄우는 역할을 한다.
 					AlertDialog.Builder alert=new AlertDialog.Builder(LoginActivity.this);
