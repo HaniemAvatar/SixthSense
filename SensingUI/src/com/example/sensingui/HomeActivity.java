@@ -68,7 +68,7 @@ public class HomeActivity extends FragmentActivity {
                 case 0: // 1번째 화면
                     return new SensingConditionView();
                 case 1: // 2번째 화면
-                    return new SensingOperationView();
+                    return new SensingGraphView();
                 case 2: // 3번째 화면
                     return new SensingPiechartView();
                 case 3: // 4번째 화면

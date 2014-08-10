@@ -25,7 +25,7 @@ import com.jjoe64.graphview.LineGraphView;
  * A dummy fragment representing a section of the app, but that simply
  * displays dummy text.
  */
-public class SensingOperationView extends Fragment {
+public class SensingGraphView extends Fragment {
     /**
      * The fragment argument representing the section number for this
      * fragment.
@@ -55,13 +55,13 @@ public class SensingOperationView extends Fragment {
  
     public static final String ARG_SECTION_NUMBER = "section_number";
 
-    public SensingOperationView() {
+    public SensingGraphView() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.operate_main, container, false);
+        View rootView = inflater.inflate(R.layout.graph_main, container, false);
         mContext=rootView.getContext();
         sm = (SensorManager)mContext.getSystemService(Context.SENSOR_SERVICE);
         light_sensor= sm.getDefaultSensor(Sensor.TYPE_LIGHT);

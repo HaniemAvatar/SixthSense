@@ -5,13 +5,8 @@
     <string name="action_settings">미구현</string>
     <string name="title_section1">조도센서 현황</string>
     <string name="title_section2">조명가동율</string>
-    <string name="title_section3">스케줄 설정</string>
-    <string name="title_section4">조명기구사용현황</string>
-    <string name="title_section5">조도설정</string>
-    <string name="title_invert_transformer">Invert Transformer</string>
-    <string name="title_transform_right">RightAngle Transformer</string>
-    <string name="title_transform_combi">Transformer Combination</string>
-    <string name="peek">Peek a boo!</string>
+    <string name="title_section3">조명기구사용현황</string>
+    <string name="title_section4">스케줄설정</string>
     <string name="led01">거실(LED01)</string>
     <string name="led02">부엌(LED02)</string>
     <string name="led03">배란다(LED03)</string>
@@ -36,7 +31,7 @@
     <string name="hour06">1d 22h</string>
     <string name="hour07">16h</string>
     <string name="hour08">2d 2h</string>
-    <string name="bacon">현재 UI만 개발되었습니다. 내용을 채워야해요.</string>
+    <string name="time">08:30</string>
     <!-- Application -->
 	<color name="holo_blue_light">#ff33b5e5</color>
 	

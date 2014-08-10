@@ -24,7 +24,6 @@
         <item name="android:layout_margin">@dimen/demo_view_margin</item>
         <item name="android:gravity">left|center_vertical</item>
         <item name="android:padding">@dimen/demo_view_margin</item>
-        <item name="android:text">@string/bacon</item>
     </style>
 
 </resources>
