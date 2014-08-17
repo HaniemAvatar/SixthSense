@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="red">#FFFF5555</color>
     <color name="blue">#FF5555FF</color>
     <color name="transparent_blue">#800000FF</color>
@@ -8,4 +9,18 @@
     <color name="orange">#FFFFBB33</color>
     <color name="transparent_orange">#80FFBB33</color>
     <color name="purple">#FFAA66CC</color>
+
+    <color name="holo_blue">#DF729FCF</color>
+    <color name="holo_red">#DFCD5353</color>
+    <color name="holo_yellow">#DFCEBF54</color>
+    <color name="holo_green">#DF4EC487</color>
+    <color name="holo_violet">#DF7145B2</color>
+    <color name="holo_pink">#DFD95A9F</color>
+
+    <color name="holo_blue_t">#FF527FCF</color>
+    <color name="holo_red_t">#FFCD3333</color>
+    <color name="holo_yellow_t">#FFAEBF34</color>
+    <color name="holo_green_t">#FF2EC467</color>
+    <color name="holo_violet_t">#FF5125B2</color>
+    <color name="holo_pink_t">#FFD93A7F</color>
 </resources>

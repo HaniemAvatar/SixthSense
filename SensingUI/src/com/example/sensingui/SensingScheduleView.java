@@ -140,7 +140,7 @@ public class SensingScheduleView extends Fragment {
             ChildItem item = getChild(groupPosition, childPosition);
             if (convertView == null) {
                 holder = new ChildHolder();
-                convertView = inflater.inflate(R.layout.list_item, parent, false);
+                convertView = inflater.inflate(R.layout.schedule_list, parent, false);
                 holder.title = (TextView) convertView.findViewById(R.id.textTitle);
                 holder.hint = (TextView) convertView.findViewById(R.id.textHint);
                 convertView.setTag(holder);
@@ -180,7 +180,7 @@ public class SensingScheduleView extends Fragment {
             GroupItem item = getGroup(groupPosition);
             if (convertView == null) {
                 holder = new GroupHolder();
-                convertView = inflater.inflate(R.layout.group_item, parent, false);
+                convertView = inflater.inflate(R.layout.schedule_item, parent, false);
                 holder.title = (TextView) convertView.findViewById(R.id.textTitle);
                 convertView.setTag(holder);
             } else {

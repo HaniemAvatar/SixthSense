@@ -32,116 +32,113 @@ import com.example.sensingui.assets.PieSlice;
  */
 
 public class SensingPiechartView extends Fragment {
-    SensorManager sm;
+	SensorManager sm;
 	Sensor light_sensor;
 	Context mContext;
 	int lightBulb;
-	int[] brightFreq = {0, 0, 0, 0, 0};
+	int[] brightFreq = { 0, 0, 0, 0, 0 };
+	private int[] colorlistSlice = { R.color.holo_red, R.color.holo_yellow,
+			R.color.holo_green, R.color.holo_blue, R.color.holo_violet,
+			R.color.holo_pink };
+	public static final int ledNum = 5;
 	PieGraph pg;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.piechartvertical_main, container, false);
-        mContext=rootView.getContext();
-        sm = (SensorManager)mContext.getSystemService(Context.SENSOR_SERVICE);
-        light_sensor= sm.getDefaultSensor(Sensor.TYPE_LIGHT);
-        final Resources resources = getResources();
-        pg = (PieGraph) rootView.findViewById(R.id.piegraph);
-        //Pie Chart에 Slice들을 추가
-        PieSlice slice = new PieSlice();
-        slice.setColor(resources.getColor(R.color.red));
-        slice.setValue(0);
-        pg.addSlice(slice);
-        slice = new PieSlice();
-        slice.setColor(resources.getColor(R.color.orange));
-        slice.setValue(0);
-        pg.addSlice(slice);
-        slice = new PieSlice();
-        slice.setColor(resources.getColor(R.color.green_light));
-        slice.setValue(0);
-        pg.addSlice(slice);
-        slice = new PieSlice();
-        slice.setColor(resources.getColor(R.color.blue));
-        slice.setValue(0);
-        pg.addSlice(slice);
-        slice = new PieSlice();
-        slice.setColor(resources.getColor(R.color.purple));
-        slice.setValue(0);
-        pg.addSlice(slice);
-        pg.setInnerCircleRatio(150);
-        pg.setPadding(1);
-        pg.setOnSliceClickedListener(new OnSliceClickedListener() {
-            @Override
-            public void onClick(int index) {
-                Toast.makeText(getActivity(),
-                        "Bright Over " + index + " clicked",
-                        Toast.LENGTH_SHORT)
-                        .show();
-            }
-        });
-        sm.registerListener(listener, light_sensor, SensorManager.SENSOR_DELAY_NORMAL);
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {			
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		final View rootView = inflater.inflate(R.layout.piechartvertical_main,
+				container, false);
+		mContext = rootView.getContext();
+		sm = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
+		light_sensor = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
+		final Resources resources = getResources();
+		pg = (PieGraph) rootView.findViewById(R.id.piegraph);
+		
+		// Pie Chart에 Slice들을 추가
+		for (int i = 0; i < ledNum; i++) {
+			PieSlice slice = new PieSlice();
+			slice.setColor(resources.getColor(colorlistSlice[i%5]));
+			slice.setValue(0);
+			pg.addSlice(slice);
+		}
+		
+		// Pie Chart 디자인
+		pg.setInnerCircleRatio(150);
+		pg.setPadding(1);
+		pg.setOnSliceClickedListener(new OnSliceClickedListener() {
+			@Override
+			public void onClick(int index) {
+				Toast.makeText(getActivity(),
+						"Bright Over " + index + " clicked", Toast.LENGTH_SHORT)
+						.show();
+			}
+		});
+		sm.registerListener(listener, light_sensor,	SensorManager.SENSOR_DELAY_NORMAL);
+		
+		// Pie Chart 업데이트
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
-				((Activity) mContext).runOnUiThread(new Runnable() {					
+				((Activity) mContext).runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
 						PieSlice s;
-						brightFreq[(int) Math.log10(lightBulb+1)]++;
-				        for (int i=0;i<pg.getSlices().size();i++){
-				            s = pg.getSlice(i);
-				        	s.setGoalValue((float)brightFreq[i]);
-				        }
-				        pg.setDuration(300);//default if unspecified is 300 ms
-				        pg.setInterpolator(new AccelerateDecelerateInterpolator());//default if unspecified is linear; constant speed
-				        pg.setAnimationListener(getAnimationListener());
-				        pg.animateToGoalValues();//animation will always overwrite. Pass true to call the onAnimationCancel Listener with onAnimationEnd
+						brightFreq[(int) Math.log10(lightBulb + 1)]++;
+						for (int i = 0; i < pg.getSlices().size(); i++) {
+							s = pg.getSlice(i);
+							s.setGoalValue((float) brightFreq[i]);
+						}
+						pg.setDuration(300);// default if unspecified is 300 ms
+						pg.setInterpolator(new AccelerateDecelerateInterpolator());
+						pg.setAnimationListener(getAnimationListener());
+						pg.animateToGoalValues();
 					}
 				});
 			}
-		}, 0, 100);
-        
-        return rootView;
-    }
+		}, 0, 100); 
 
-    public Animator.AnimatorListener getAnimationListener(){
-        return new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
+		return rootView;
+	}
 
-            }
+	public Animator.AnimatorListener getAnimationListener() {
+		return new Animator.AnimatorListener() {
+			@Override
+			public void onAnimationStart(Animator animation) {
 
-            @Override
-            public void onAnimationEnd(Animator animation) {
-            	
-            }
+			}
 
-            @Override
-            public void onAnimationCancel(Animator animation) {//you might want to call slice.setvalue(slice.getGoalValue)
-            	
-            }
+			@Override
+			public void onAnimationEnd(Animator animation) {
 
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-            	
-            }
-        };
-    }
-    
-    SensorEventListener listener = new SensorEventListener() {		
+			}
+
+			@Override
+			public void onAnimationCancel(Animator animation) {// you might want
+																// to call
+																// slice.setvalue(slice.getGoalValue)
+
+			}
+
+			@Override
+			public void onAnimationRepeat(Animator animation) {
+
+			}
+		};
+	}
+
+	SensorEventListener listener = new SensorEventListener() {
 		@Override
 		public void onSensorChanged(SensorEvent event) {
 			// TODO Auto-generated method stub
-			lightBulb=(int)event.values[0];
+			lightBulb = (int) event.values[0];
 		}
-		
+
 		@Override
 		public void onAccuracyChanged(Sensor sensor, int accuracy) {
 			// TODO Auto-generated method stub
 		}
 	};
-	
+
 }
