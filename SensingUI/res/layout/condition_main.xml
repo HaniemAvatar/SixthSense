@@ -2,33 +2,290 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.autosensing.MainActivity$PlaceholderFragment"
     android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:text="Current Brightness??"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"        
-        android:id="@+id/llight"
-        android:textSize="20dp"
-        />
-    
-    <CheckBox 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"        
-        android:id="@+id/AutoSense"
-        android:text="Turn On BrightSensor."
-        /> 
-     <ImageView 
-      	  android:id="@+id/vlight"
-      	  android:layout_width="wrap_content"
-      	  android:layout_height="wrap_content" />
+    <ScrollView
+        android:id="@+id/ophscroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/led01" />
+
+                <CheckBox
+                    android:id="@+id/check01"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/isauto" />
+
+                <SeekBar
+                    android:id="@+id/seek01"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/led02" />
+
+                <CheckBox
+                    android:id="@+id/check02"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/isauto" />
+
+                <SeekBar
+                    android:id="@+id/seek02"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/led03" />
+
+                <CheckBox
+                    android:id="@+id/check03"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/isauto" />
+
+                <SeekBar
+                    android:id="@+id/seek03"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/led04" />
+
+                <CheckBox
+                    android:id="@+id/check04"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/isauto" />
+
+                <SeekBar
+                    android:id="@+id/seek04"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/led05" />
+
+                <CheckBox
+                    android:id="@+id/check05"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/isauto" />
+
+                <SeekBar
+                    android:id="@+id/seek05"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:columnCount="5"
+            android:orientation="horizontal"
+            android:rowCount="3" >
+
+            <ImageView
+                android:id="@+id/light01"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/led01" />
+            <ImageView
+                android:id="@+id/light02"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/led02" />
+            <ImageView
+                android:id="@+id/light03"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/led03" />
+                
+            <ImageView
+                android:id="@+id/light04"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/led04" />
+            <ImageView
+                android:id="@+id/light05"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:contentDescription="@string/led05" />
+
+            <TextView
+                android:id="@+id/name01"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/led01" />
+
+            <TextView
+                android:id="@+id/name02"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/led02" />
+
+            <TextView
+                android:id="@+id/name03"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/led03" />
+
+            <TextView
+                android:id="@+id/name04"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/led04" />
+
+            <TextView
+                android:id="@+id/name05"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/led05" />
+
+            <TextView
+                android:id="@+id/per01"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/per01" />
+
+            <TextView
+                android:id="@+id/per02"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/per02" />
+
+            <TextView
+                android:id="@+id/per03"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/per03" />
+
+            <TextView
+                android:id="@+id/per04"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/per04" />
+
+            <TextView
+                android:id="@+id/per05"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="10dp"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/per05" />
+        </GridLayout>
+    </HorizontalScrollView>
+
 </LinearLayout>

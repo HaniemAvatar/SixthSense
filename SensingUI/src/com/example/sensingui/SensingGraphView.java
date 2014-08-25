@@ -1,5 +1,11 @@
 package com.example.sensingui;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -55,7 +61,7 @@ public class SensingGraphView extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.graph_main, container, false);
-		final Resources resources = getResources();
+		Resources resources = getResources();
 		mContext = rootView.getContext();
 
 		sm = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
@@ -145,6 +151,24 @@ public class SensingGraphView extends Fragment {
 		mHandler.postDelayed(mTimer, 600);
 
 	}
+	
+	public static String connectionFromServer(String url) throws IOException {
+
+        BufferedReader inputStream = null;
+
+        URL myurl = new URL(url);
+        URLConnection dc = myurl.openConnection();
+
+        dc.setConnectTimeout(500);
+        dc.setReadTimeout(500);
+
+        inputStream = new BufferedReader(new InputStreamReader(
+                dc.getInputStream()));
+
+        // read the JSON results into a string
+        String result = inputStream.readLine();
+        return result;
+    }
 
 	SensorEventListener listener = new SensorEventListener() {
 

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.example.sensingui.assets.PieGraph
+        android:id="@+id/piegraph"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_weight="1"
+        app:pieInnerCircleRatio="128"
+        app:pieSlicePadding="0dp" />
+
+    <ScrollView
+        android:id="@+id/ophscroll"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/name01"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.7"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:text="@string/led01"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/tper01"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/ttime01"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/name02"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.7"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:text="@string/led02"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/tper02"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/ttime02"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/name03"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.7"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:text="@string/led03"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/tper03"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/ttime03"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/name04"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.7"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:text="@string/led04"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/tper04"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/ttime04"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/name05"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="0.7"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:text="@string/led05"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/tper05"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/ttime05"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:singleLine="true"
+                    android:textSize="25sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
