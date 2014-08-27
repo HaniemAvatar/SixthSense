@@ -1,27 +1,18 @@
 package com.example.sensingui;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -30,7 +21,6 @@ import android.hardware.SensorManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,17 +41,19 @@ public class SensingConditionView extends Fragment {
 	SeekBar Seek[] = new SeekBar[5];
 	int CheckReader[] = new int[5];
 	TextView per[] = new TextView[5];
+	int initialprogress[] = new int[5];
 
-	AsyncTask<Void, Void, Void> mTask;
-	String jsonString;
-
-	String url = "http://14.63.214.50:2670/list";
+    String url = "http://14.63.214.50:2670/list";
+    ProgressDialog mProgressDialog;
+    
+    String itemdata[][] =new String[5][7];
+    String columndata[] = {"room","lux","on_off","live_power","total_power","user_state","id"};
 
 	ImageView led[] = new ImageView[5];
 	Context mContext;
 	
 	HttpClient httpClient = new DefaultHttpClient();
-	HttpPost httpPost = new HttpPost("http://www.example.com");
+	HttpPost httpPost = new HttpPost("");
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,22 +86,11 @@ public class SensingConditionView extends Fragment {
 		per[2] = (TextView) rootView.findViewById(R.id.per03);
 		per[3] = (TextView) rootView.findViewById(R.id.per04);
 		per[4] = (TextView) rootView.findViewById(R.id.per05);
-
-		String html;
-        html = DownloadHtml("http://14.63.214.50:2670/list");
-    	List<NameValuePair> nameValuePair = new ArrayList<NameValuePair>(2);
-    	nameValuePair.add(new BasicNameValuePair("username", "test_user"));
-    	nameValuePair.add(new BasicNameValuePair("password", "123456789"));
 		
-    	try {
-    	      httpPost.setEntity(new UrlEncodedFormEntity(nameValuePair));
-    	 
-    	} catch (UnsupportedEncodingException e) 
-    	{
-    	     e.printStackTrace();
-    	}
-    	
-    	Seek[0].setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+		new LoadData().execute();
+		
+		
+		Seek[0].setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
@@ -174,14 +155,15 @@ public class SensingConditionView extends Fragment {
 			public void onStartTrackingTouch(SeekBar seekBar) {
 			}
 		});
-
-		sm.registerListener(listener, light_sensor,
-				SensorManager.SENSOR_DELAY_NORMAL);
+		
+		
 
 		
-		check[0].setText(html);
-
-
+		sm.registerListener(listener, light_sensor,
+				SensorManager.SENSOR_DELAY_NORMAL);
+		
+		
+		
 		Timer timer = new Timer();
 		timer.scheduleAtFixedRate(new TimerTask() {
 			@Override
@@ -209,19 +191,8 @@ public class SensingConditionView extends Fragment {
 								led[i].setImageResource(R.drawable.lightbulb_0);
 							}
 							per[i].setText(LightValue[i] + "%");
-
 						}
-						try {
-						    HttpResponse response = httpClient.execute(httpPost);
-						    // write response to log
-						    Log.d("Http Post Response:", response.toString());
-						} catch (ClientProtocolException e) {
-						    // Log exception
-						    e.printStackTrace();
-						} catch (IOException e) {
-						    // Log exception
-						    e.printStackTrace();
-						}
+						check[0].setText(itemdata[1][1]);
 					}
 				});
 			}
@@ -230,47 +201,6 @@ public class SensingConditionView extends Fragment {
 		return rootView;
 	}
 
-	public static String getJsonFromServer(String url) throws IOException {
-
-		BufferedReader inputStream = null;
-
-		URL jsonUrl = new URL(url);
-		URLConnection dc = jsonUrl.openConnection();
-
-		dc.setConnectTimeout(5000);
-		dc.setReadTimeout(5000);
-
-		inputStream = new BufferedReader(new InputStreamReader(
-				dc.getInputStream()));
-
-		// read the JSON results into a string
-		String jsonResult = inputStream.readLine();
-		return jsonResult;
-	}
-	String DownloadHtml(String addr){
-	       StringBuilder html = new StringBuilder();
-	       try{
-	          URL url = new URL(addr);
-	          HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-	          if(conn != null){
-	             conn.setConnectTimeout(10000);
-	             conn.setUseCaches(false);
-	             if(conn.getResponseCode() == HttpURLConnection.HTTP_OK){
-	                BufferedReader br = new BufferedReader(
-	                      new InputStreamReader(conn.getInputStream()));
-	                for(;;){
-	                      String line = br.readLine();
-	                      if(line == null) break;
-	                      html.append(line + '\n');
-	                }
-	                br.close();
-	             }
-	             conn.disconnect();
-	          }
-	       }
-	       catch(Exception ex){;}
-	       return html.toString();
-	    }
 
 	SensorEventListener listener = new SensorEventListener() {
 
@@ -285,4 +215,49 @@ public class SensingConditionView extends Fragment {
 			// TODO Auto-generated method stub
 		}
 	};
+	private class LoadData extends AsyncTask<Void, Void, Void> { 
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mProgressDialog = new ProgressDialog(mContext);
+            mProgressDialog.setTitle("Load Data");
+            mProgressDialog.setMessage("Loading...");
+            mProgressDialog.setIndeterminate(false);
+            mProgressDialog.show();
+        }
+ 
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                // Connect to the web site
+                Document document = Jsoup.connect(url).get();
+                // Using Elements to get the Meta data
+                for(int i=0;i<5;i++){
+                	for(int j=0;j<7;j++){
+                Elements reader=document.select("meta[name="+columndata[j]+(i+1)+"]");
+                // Locate the content attribute
+                itemdata[i][j] = reader.attr("content");
+                	}
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+ 
+        @Override
+        protected void onPostExecute(Void result) {
+        	initialprogress[0]=(int)(Math.log10(Double.parseDouble(itemdata[0][1])+1)*20);
+    		initialprogress[1]=(int)(Math.log10(Double.parseDouble(itemdata[1][1])+1)*20);
+    		initialprogress[2]=(int)(Math.log10(Double.parseDouble(itemdata[2][1])+1)*20);
+    		initialprogress[3]=(int)(Math.log10(Double.parseDouble(itemdata[3][1])+1)*20);
+    		initialprogress[4]=(int)(Math.log10(Double.parseDouble(itemdata[4][1])+1)*20);
+    		Seek[0].setProgress(initialprogress[0]);
+    		Seek[1].setProgress(initialprogress[1]);
+    		Seek[2].setProgress(initialprogress[2]);
+    		Seek[3].setProgress(initialprogress[3]);
+    		Seek[4].setProgress(initialprogress[4]);
+            mProgressDialog.dismiss();
+        }
+    }
 }
