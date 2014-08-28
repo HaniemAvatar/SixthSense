@@ -1,24 +1,12 @@
 package com.example.sensingui;
 
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -32,28 +20,25 @@ import android.widget.TextView;
 public class SensingConditionView extends Fragment {
 
 	public static final String ARG_SECTION_NUMBER = "section_number";
-	SensorManager sm;
-	Sensor light_sensor;
-	CheckBox check[] = new CheckBox[5];
-	int SensorData;
+	public static CheckBox check[] = new CheckBox[5];
 	int LightValue[] = new int[5];
-	int SeekValue[] = { 0, 0, 0, 0, 0 };
-	SeekBar Seek[] = new SeekBar[5];
+	public static int SeekValue[] = { 0, 0, 0, 0, 0 };
+	public static SeekBar Seek[] = new SeekBar[5];
 	int CheckReader[] = new int[5];
 	TextView per[] = new TextView[5];
-	int initialprogress[] = new int[5];
+	public static int initialprogress[] = new int[5];
 
     String url = "http://14.63.214.50:2670/list";
     ProgressDialog mProgressDialog;
     
-    String itemdata[][] =new String[5][7];
+    public String itemdata[][] =new String[5][7];
     String columndata[] = {"room","lux","on_off","live_power","total_power","user_state","id"};
 
 	ImageView led[] = new ImageView[5];
 	Context mContext;
+	Intent intent;
 	
-	HttpClient httpClient = new DefaultHttpClient();
-	HttpPost httpPost = new HttpPost("");
+	Bundle bundle;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,8 +46,6 @@ public class SensingConditionView extends Fragment {
 		View rootView = inflater.inflate(R.layout.condition_main, container,
 				false);
 		mContext = rootView.getContext();
-		sm = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
-		light_sensor = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
 		check[0] = (CheckBox) rootView.findViewById(R.id.check01);
 		check[1] = (CheckBox) rootView.findViewById(R.id.check02);
 		check[2] = (CheckBox) rootView.findViewById(R.id.check03);
@@ -87,8 +70,7 @@ public class SensingConditionView extends Fragment {
 		per[3] = (TextView) rootView.findViewById(R.id.per04);
 		per[4] = (TextView) rootView.findViewById(R.id.per05);
 		
-		new LoadData().execute();
-		
+		//new LoadData().execute();
 		
 		Seek[0].setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -155,13 +137,7 @@ public class SensingConditionView extends Fragment {
 			public void onStartTrackingTouch(SeekBar seekBar) {
 			}
 		});
-		
-		
 
-		
-		sm.registerListener(listener, light_sensor,
-				SensorManager.SENSOR_DELAY_NORMAL);
-		
 		
 		
 		Timer timer = new Timer();
@@ -174,7 +150,7 @@ public class SensingConditionView extends Fragment {
 						// TODO Auto-generated method stub
 						for (int i = 0; i < 5; i++) {
 							if (check[i].isChecked()) {
-								LightValue[i] = SensorData;
+								LightValue[i] = HomeActivity.SensorData;
 							} else {
 								LightValue[i] = SeekValue[i];
 							}
@@ -192,72 +168,11 @@ public class SensingConditionView extends Fragment {
 							}
 							per[i].setText(LightValue[i] + "%");
 						}
-						check[0].setText(itemdata[1][1]);
 					}
 				});
-			}
+			} 
 
 		}, 0, 1000);
 		return rootView;
 	}
-
-
-	SensorEventListener listener = new SensorEventListener() {
-
-		@Override
-		public void onSensorChanged(SensorEvent event) {
-			// TODO Auto-generated method stub
-			SensorData = (int) (Math.log10((double) event.values[0] + 1) * 20);
-		}
-
-		@Override
-		public void onAccuracyChanged(Sensor sensor, int accuracy) {
-			// TODO Auto-generated method stub
-		}
-	};
-	private class LoadData extends AsyncTask<Void, Void, Void> { 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            mProgressDialog = new ProgressDialog(mContext);
-            mProgressDialog.setTitle("Load Data");
-            mProgressDialog.setMessage("Loading...");
-            mProgressDialog.setIndeterminate(false);
-            mProgressDialog.show();
-        }
- 
-        @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                // Connect to the web site
-                Document document = Jsoup.connect(url).get();
-                // Using Elements to get the Meta data
-                for(int i=0;i<5;i++){
-                	for(int j=0;j<7;j++){
-                Elements reader=document.select("meta[name="+columndata[j]+(i+1)+"]");
-                // Locate the content attribute
-                itemdata[i][j] = reader.attr("content");
-                	}
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
- 
-        @Override
-        protected void onPostExecute(Void result) {
-        	initialprogress[0]=(int)(Math.log10(Double.parseDouble(itemdata[0][1])+1)*20);
-    		initialprogress[1]=(int)(Math.log10(Double.parseDouble(itemdata[1][1])+1)*20);
-    		initialprogress[2]=(int)(Math.log10(Double.parseDouble(itemdata[2][1])+1)*20);
-    		initialprogress[3]=(int)(Math.log10(Double.parseDouble(itemdata[3][1])+1)*20);
-    		initialprogress[4]=(int)(Math.log10(Double.parseDouble(itemdata[4][1])+1)*20);
-    		Seek[0].setProgress(initialprogress[0]);
-    		Seek[1].setProgress(initialprogress[1]);
-    		Seek[2].setProgress(initialprogress[2]);
-    		Seek[3].setProgress(initialprogress[3]);
-    		Seek[4].setProgress(initialprogress[4]);
-            mProgressDialog.dismiss();
-        }
-    }
 }

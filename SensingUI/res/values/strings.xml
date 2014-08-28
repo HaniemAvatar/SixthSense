@@ -12,11 +12,11 @@
     <string name="led03">LED03</string>
     <string name="led04">LED04</string>
     <string name="led05">LED05</string>
-    <string name="per01">38%</string>    
-    <string name="per02">56%</string>    
-    <string name="per03">75%</string>    
-    <string name="per04">86%</string>    
-    <string name="per05">75%</string>
+    <string name="per01">0%</string>    
+    <string name="per02">0%</string>    
+    <string name="per03">0%</string>    
+    <string name="per04">0%</string>    
+    <string name="per05">0%</string>
     <string name="time">08:30</string>
     <string name="isauto">자동</string>
     <!-- Application -->

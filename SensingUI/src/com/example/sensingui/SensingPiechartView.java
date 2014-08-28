@@ -7,10 +7,6 @@ import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -33,11 +29,7 @@ import com.example.sensingui.assets.PieSlice;
  */
 
 public class SensingPiechartView extends Fragment {
-	SensorManager sm;
-	Sensor light_sensor;
 	Context mContext;
-	int lightBulb;
-	int[] brightFreq = { 0, 0, 0, 0, 0 };
 	private int[] colorlistSlice = { R.color.holo_red, R.color.holo_yellow,
 			R.color.holo_green, R.color.holo_blue, R.color.holo_violet,
 			R.color.holo_pink };
@@ -57,8 +49,6 @@ public class SensingPiechartView extends Fragment {
 		View rootView = inflater.inflate(R.layout.piechart_main,
 				container, false);
 		mContext = rootView.getContext();
-		sm = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
-		light_sensor = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
 		name[0] = (TextView) rootView.findViewById(R.id.name01);
 		name[1] = (TextView) rootView.findViewById(R.id.name02);
 		name[2] = (TextView) rootView.findViewById(R.id.name03);
@@ -98,9 +88,6 @@ public class SensingPiechartView extends Fragment {
 						.show();
 			}
 		});
-		sm.registerListener(listener, light_sensor,
-				SensorManager.SENSOR_DELAY_NORMAL);
-
 		// Pie Chart 업데이트
 		Timer timer = new Timer();
 		timer.scheduleAtFixedRate(new TimerTask() {
@@ -111,18 +98,19 @@ public class SensingPiechartView extends Fragment {
 					public void run() {
 						// TODO Auto-generated method stub
 						PieSlice s;
-						double total=0;
+						
+						float temp=0,total=0;
 						for (int i = 0; i < pg.getSlices().size(); i++) {
-							data[i]+= Math.log10(lightBulb + 1) + Math.random();
+							temp=Float.parseFloat(HomeActivity.itemdata[i][4]);
 							s = pg.getSlice(i);
-							s.setGoalValue((float) data[i]);
-							total+=data[i];
+							s.setGoalValue(temp);
+							total+=temp;
 						}
 						for (int i = 0; i < pg.getSlices().size(); i++) {
-							tper[i].setText((int) (data[i]/total*100+0.5) + "%");
-							ttime[i].setText((int) (data[i] / 2400) + "d" + (int) (data[i] / 40) + "h");
+							temp=Float.parseFloat(HomeActivity.itemdata[i][4]);
+							tper[i].setText((int)(temp/total*100+0.5) + "%");
+							ttime[i].setText((int)(temp/120) + "d" +(int)(temp%120)/5 +"h");
 						}
-						pg.setDuration(300);// default if unspecified is 300 ms
 						pg.setInterpolator(new AccelerateDecelerateInterpolator());
 						pg.setAnimationListener(getAnimationListener());
 						pg.animateToGoalValues();
@@ -131,7 +119,7 @@ public class SensingPiechartView extends Fragment {
 				});
 
 			}
-		}, 0, 100);
+		}, 0, 10000);
 
 		return rootView;
 	}
@@ -162,17 +150,5 @@ public class SensingPiechartView extends Fragment {
 		};
 	}
 
-	SensorEventListener listener = new SensorEventListener() {
-		@Override
-		public void onSensorChanged(SensorEvent event) {
-			// TODO Auto-generated method stub
-			lightBulb = (int) event.values[0];
-		}
-
-		@Override
-		public void onAccuracyChanged(Sensor sensor, int accuracy) {
-			// TODO Auto-generated method stub
-		}
-	};
 
 }

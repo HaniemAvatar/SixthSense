@@ -1,19 +1,8 @@
 package com.example.sensingui;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Paint.Align;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -30,7 +19,6 @@ import com.jjoe64.graphview.LineGraphView;
 
 public class SensingGraphView extends Fragment {
 
-	private Context mContext;
 	private final Handler mHandler = new Handler();
 	private Runnable mTimer;
 	private GraphView graphView;
@@ -50,9 +38,6 @@ public class SensingGraphView extends Fragment {
 			R.color.holo_green_t, R.color.holo_blue_t, R.color.holo_violet_t,
 			R.color.holo_pink_t };
 	public static final int ledNum=5;
-	SensorManager sm;
-	Sensor light_sensor;
-	int lightBulb;
 
 	public SensingGraphView() {
 	}
@@ -62,10 +47,7 @@ public class SensingGraphView extends Fragment {
 			Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.graph_main, container, false);
 		Resources resources = getResources();
-		mContext = rootView.getContext();
 
-		sm = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
-		light_sensor = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
 		name[0]=(TextView)rootView.findViewById(R.id.name01);
 		name[1]=(TextView)rootView.findViewById(R.id.name02);
 		name[2]=(TextView)rootView.findViewById(R.id.name03);
@@ -134,53 +116,20 @@ public class SensingGraphView extends Fragment {
 							new GraphViewData(9, graphdata[i][8]),
 							new GraphViewData(10, graphdata[i][9]) });					
 				}
-				mHandler.postDelayed(this, 600);
+				mHandler.postDelayed(this, 1000);
 				for (int i = 0; i < ledNum; i++) {
 					for (int j = 0; j < 9; j++) {
 						graphdata[i][j] = graphdata[i][j + 1];
 					}
-					sm.registerListener(listener, light_sensor, SensorManager.SENSOR_DELAY_NORMAL);
-					double data = Math.log10(lightBulb + 1)+Math.random();
-					graphdata[i][9] = data;
-					led[i].setText((int)(data*20)+"%");
+					graphdata[i][9] = Double.parseDouble(HomeActivity.itemdata[i][3])/10;
+					led[i].setText((int)(graphdata[i][9]*10)+"%");
 				}
 				
 			}
 			
 		};
-		mHandler.postDelayed(mTimer, 600);
+		mHandler.postDelayed(mTimer, 1000);
 
 	}
 	
-	public static String connectionFromServer(String url) throws IOException {
-
-        BufferedReader inputStream = null;
-
-        URL myurl = new URL(url);
-        URLConnection dc = myurl.openConnection();
-
-        dc.setConnectTimeout(500);
-        dc.setReadTimeout(500);
-
-        inputStream = new BufferedReader(new InputStreamReader(
-                dc.getInputStream()));
-
-        // read the JSON results into a string
-        String result = inputStream.readLine();
-        return result;
-    }
-
-	SensorEventListener listener = new SensorEventListener() {
-
-		@Override
-		public void onSensorChanged(SensorEvent event) {
-			// TODO Auto-generated method stub
-			lightBulb = (int) event.values[0];
-		}
-
-		@Override
-		public void onAccuracyChanged(Sensor sensor, int accuracy) {
-			// TODO Auto-generated method stub
-		}
-	};
 }
