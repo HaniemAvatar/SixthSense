@@ -154,7 +154,7 @@ public class HomeActivity extends FragmentActivity {
 		@Override
 		public void onSensorChanged(SensorEvent event) {
 			// TODO Auto-generated method stub
-			SensorData = (int) (Math.log10((double) event.values[0] + 1) * 20);
+			SensorData = (int) (Math.log10((double) event.values[0] + 1) * 200);
 		}
 
 		@Override

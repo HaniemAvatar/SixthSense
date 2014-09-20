@@ -21,14 +21,12 @@ public class SensingConditionView extends Fragment {
 
 	public static final String ARG_SECTION_NUMBER = "section_number";
 	public static CheckBox check[] = new CheckBox[5];
-	int LightValue[] = new int[5];
+	public static int LightValue[] = new int[5];
 	public static int SeekValue[] = { 0, 0, 0, 0, 0 };
 	public static SeekBar Seek[] = new SeekBar[5];
 	int CheckReader[] = new int[5];
 	TextView per[] = new TextView[5];
 	public static int initialprogress[] = new int[5];
-
-    String url = "http://14.63.214.50:2670/list";
     ProgressDialog mProgressDialog;
     
     public String itemdata[][] =new String[5][7];
@@ -69,8 +67,6 @@ public class SensingConditionView extends Fragment {
 		per[2] = (TextView) rootView.findViewById(R.id.per03);
 		per[3] = (TextView) rootView.findViewById(R.id.per04);
 		per[4] = (TextView) rootView.findViewById(R.id.per05);
-		
-		//new LoadData().execute();
 		
 		Seek[0].setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -151,28 +147,32 @@ public class SensingConditionView extends Fragment {
 						for (int i = 0; i < 5; i++) {
 							if (check[i].isChecked()) {
 								LightValue[i] = HomeActivity.SensorData;
+								
 							} else {
-								LightValue[i] = SeekValue[i];
-							}
+								LightValue[i] = SeekValue[i]*10;
 
-							if (LightValue[i] > 80) {
+							}
+							
+							if (LightValue[i] > 800) {
 								led[i].setImageResource(R.drawable.lightbulb_4);
-							} else if (LightValue[i] > 60) {
+							} else if (LightValue[i] > 600) {
 								led[i].setImageResource(R.drawable.lightbulb_3);
-							} else if (LightValue[i] > 40) {
+							} else if (LightValue[i] > 400) {
 								led[i].setImageResource(R.drawable.lightbulb_2);
-							} else if (LightValue[i] > 20) {
+							} else if (LightValue[i] > 200) {
 								led[i].setImageResource(R.drawable.lightbulb_1);
 							} else {
 								led[i].setImageResource(R.drawable.lightbulb_0);
 							}
-							per[i].setText(LightValue[i] + "%");
+							per[i].setText(LightValue[i]/10 + "%");
 						}
+						
 					}
 				});
 			} 
 
-		}, 0, 1000);
+		}, 0, 500);
 		return rootView;
 	}
+
 }
