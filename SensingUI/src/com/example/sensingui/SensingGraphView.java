@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.sensingui.background.BackgroundService;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
@@ -121,7 +122,7 @@ public class SensingGraphView extends Fragment {
 					for (int j = 0; j < 9; j++) {
 						graphdata[i][j] = graphdata[i][j + 1];
 					}
-					graphdata[i][9] = Double.parseDouble(HomeActivity.itemdata[i][3])/10;
+					graphdata[i][9] = Double.parseDouble(BackgroundService.itemdata[i][3])/10;
 					led[i].setText((int)(graphdata[i][9]*10)+"%");
 				}
 				

@@ -3,6 +3,9 @@ package com.example.sensingui;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.example.sensingui.background.BackgroundService;
+
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -21,7 +24,7 @@ public class SensingConditionView extends Fragment {
 
 	public static final String ARG_SECTION_NUMBER = "section_number";
 	public static CheckBox check[] = new CheckBox[5];
-	public static int LightValue[] = new int[5];
+	
 	public static int SeekValue[] = { 0, 0, 0, 0, 0 };
 	public static SeekBar Seek[] = new SeekBar[5];
 	int CheckReader[] = new int[5];
@@ -146,25 +149,25 @@ public class SensingConditionView extends Fragment {
 						// TODO Auto-generated method stub
 						for (int i = 0; i < 5; i++) {
 							if (check[i].isChecked()) {
-								LightValue[i] = HomeActivity.SensorData;
+								BackgroundService.LightValue[i] = HomeActivity.SensorData;
 								
 							} else {
-								LightValue[i] = SeekValue[i]*10;
+								BackgroundService.LightValue[i] = SeekValue[i]*10;
 
 							}
 							
-							if (LightValue[i] > 800) {
+							if (BackgroundService.LightValue[i] > 800) {
 								led[i].setImageResource(R.drawable.lightbulb_4);
-							} else if (LightValue[i] > 600) {
+							} else if (BackgroundService.LightValue[i] > 600) {
 								led[i].setImageResource(R.drawable.lightbulb_3);
-							} else if (LightValue[i] > 400) {
+							} else if (BackgroundService.LightValue[i] > 400) {
 								led[i].setImageResource(R.drawable.lightbulb_2);
-							} else if (LightValue[i] > 200) {
+							} else if (BackgroundService.LightValue[i] > 200) {
 								led[i].setImageResource(R.drawable.lightbulb_1);
 							} else {
 								led[i].setImageResource(R.drawable.lightbulb_0);
 							}
-							per[i].setText(LightValue[i]/10 + "%");
+							per[i].setText(BackgroundService.LightValue[i]/10 + "%");
 						}
 						
 					}

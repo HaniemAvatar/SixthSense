@@ -17,14 +17,18 @@
     <string name="per03">0%</string>    
     <string name="per04">0%</string>    
     <string name="per05">0%</string>
+    <string name="per">0%</string>    
     <string name="time">08:30</string>
     <string name="isauto">자동</string>
+    <string name="ctrl">제어</string>
+    <string name="off">OFF</string>
     <!-- Application -->
 	<color name="holo_blue_light">#ff33b5e5</color>
 	
     <!-- Math Alarm Activity -->
     <string name="title_activity_set_alarms">Set Alarm</string>
     <string name="no_alarms">No alarms have been set</string>
+    <string name="alarm_ring">Followings Are Set</string>
     
     <string name="button_new">New</string>
     

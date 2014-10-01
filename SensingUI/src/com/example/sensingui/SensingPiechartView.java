@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.sensingui.assets.PieGraph;
 import com.example.sensingui.assets.PieGraph.OnSliceClickedListener;
 import com.example.sensingui.assets.PieSlice;
+import com.example.sensingui.background.BackgroundService;
 
 /**
  * This is an example usage of the AnimatedExpandableListView class.
@@ -101,13 +102,13 @@ public class SensingPiechartView extends Fragment {
 						
 						float temp=0,total=0;
 						for (int i = 0; i < pg.getSlices().size(); i++) {
-							temp=Float.parseFloat(HomeActivity.itemdata[i][4]);
+							temp=Float.parseFloat(BackgroundService.itemdata[i][4]);
 							s = pg.getSlice(i);
 							s.setGoalValue(temp);
 							total+=temp;
 						}
 						for (int i = 0; i < pg.getSlices().size(); i++) {
-							temp=Float.parseFloat(HomeActivity.itemdata[i][4]);
+							temp=Float.parseFloat(BackgroundService.itemdata[i][4]);
 							tper[i].setText((int)(temp/total*100+0.5) + "%");
 							ttime[i].setText((int)(temp/120) + "d" +(int)(temp%120)/5 +"h");
 						}

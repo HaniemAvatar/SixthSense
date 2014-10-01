@@ -1,6 +1,10 @@
 package com.example.sensingui;
 
+
+import com.example.sensingui.background.BackgroundService;
+
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -39,7 +43,8 @@ public class HomeActivity extends FragmentActivity {
 	SensorManager sm;
 	Sensor light_sensor;
 	public static int SensorData;
-	public static String itemdata[][] = new String[5][8];
+	public static ComponentName Background;
+	
 
     private BroadcastReceiver receiver = new BroadcastReceiver() {
 
@@ -54,15 +59,14 @@ public class HomeActivity extends FragmentActivity {
         setContentView(R.layout.activity_home); //기본 현태는 activity_home.xml에서 따온다.
         for(int i=0;i<5;i++){
         	for(int j=0;j<8;j++){
-        		itemdata[i][j]="0";
+        		BackgroundService.itemdata[i][j]="0";
         	}
         }
         
-        Log.d("Background Running", itemdata[2][3]);
 
 		Intent intent = new Intent(this, BackgroundService.class);
 		// add infos for the service which file to download and where to store
-		startService(intent);
+		Background = startService(intent);
 		
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the app.
