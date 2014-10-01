@@ -28,7 +28,6 @@ public class BackgroundService extends IntentService {
 			"userstate", "id", "mode" };
 	String url = "http://14.63.214.50:2670/list";
 	public static int LightValue[] = new int[5];
-	final static double exp5=Math.exp(5);
 	public static String itemdata[][] = new String[5][8];
 	Context mContext;
 
@@ -116,10 +115,10 @@ public class BackgroundService extends IntentService {
 			SensingConditionView.check[3].setChecked(TextToBoolean(itemdata[3][7]));
 			SensingConditionView.check[4].setChecked(TextToBoolean(itemdata[4][7]));
 			LightValue[0]=Integer.parseInt(itemdata[0][1])*10;
-			LightValue[1]=Integer.parseInt(itemdata[2][1])*10;
-			LightValue[2]=Integer.parseInt(itemdata[3][1])*10;
-			LightValue[3]=Integer.parseInt(itemdata[4][1])*10;
-			LightValue[4]=Integer.parseInt(itemdata[5][1])*10;
+			LightValue[1]=Integer.parseInt(itemdata[1][1])*10;
+			LightValue[2]=Integer.parseInt(itemdata[2][1])*10;
+			LightValue[3]=Integer.parseInt(itemdata[3][1])*10;
+			LightValue[4]=Integer.parseInt(itemdata[4][1])*10;
 		}
 	}
 
@@ -165,7 +164,7 @@ public class BackgroundService extends IntentService {
 		protected Void doInBackground(Void... params) {
 
 			for (int i = 0; i < 4; i++) {
-				if (Integer.parseInt(itemdata[i][1]) != (int)(Math.exp((double) (LightValue[i])/200)*1000/exp5-1000/exp5)) {
+				if (Integer.parseInt(itemdata[i][1]) != (LightValue[i]*10)) {
 					try {
 						String update = "http://14.63.214.50:2670/list"
 								+ "/lux?lux="
